@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ConnexionServelt</display-name>
+    <servlet-name>ConnexionServelt</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ConnexionServelt</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConnexionServelt</servlet-name>
+    <url-pattern>/ConnexionServelt</url-pattern>
+    <url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -27,7 +27,7 @@
 	</div>
 	
 	<br>
-	<%=request.getContextPath()%>
+	
 	<div class="row">
 	  <div class="col-md-4 col-md-offset-4">
 		<div class="input-group center-block">
@@ -40,7 +40,7 @@
 	
 	<div class="row">
 	  <div class="col-md-4 col-md-offset-4">
-		   <a href="<%=request.getContextPath()%>/ConnexionServlet" type="button" class="btn btn-primary btn-block">Connexion</a>
+		   <a href="<%=request.getContextPath()%>/connexion" type="button" class="btn btn-primary btn-block">Connexion</a>
 	  </div>
 	</div>
 </div>
