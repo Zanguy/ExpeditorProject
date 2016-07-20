@@ -30,7 +30,7 @@ public class Commande implements Serializable {
 	
 	private String adresse;
 	
-	private EtatCommande etatCommande;
+	//private EtatCommande etatCommande;
 	
 	private Utilisateur utilisateur;
 	
