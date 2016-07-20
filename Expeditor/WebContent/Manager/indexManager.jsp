@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="fr.eni_ecole.fr.jee.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Expeditor - Manager</title>
+<title><%=ConstantIHM.EXPEDITOR %> - <%=ConstantIHM.MANAGER %></title>
 <%@ include file="../part/importCSS.jspf"%>
 </head>
 <body>
@@ -13,79 +13,55 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Commande</th>
-					<th>Client</th>
-					<th>Date</th>
-					<th>Etat</th>
-					<th>Employe</th>
+					<th><%=ConstantIHM.MANAGER_COMMANDE %></th>
+					<th><%=ConstantIHM.MANAGER_CLIENT %></th>
+					<th><%=ConstantIHM.MANAGER_DATE %></th>
+					<th><%=ConstantIHM.MANAGER_ETAT %></th>
+					<th><%=ConstantIHM.MANAGER_EMPLOYE %></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td class="commande"></td>
+					<td class="client"></td>
+					<td class="date"></td>
+					<td class="etat"></td>
+					<td class="employe"></td>
 				<tr>
 			</tbody>
 		</table>
 
 		<br>
 
-		<h2 class="center-text">Statistiques</h2>
+		<h2 class="center-text"><%=ConstantIHM.MANAGER_STATISTIQUES %></h2>
 
 		<br>
 		<div id="stats">
 			<div class="row">
 				<div class="col-sm-3 col-sm-offset-4">
-					<p>Mathieu Fort</p>
+					<p class="userStats">Mathieu Fort</p>
 				</div>
 				<div class="col-sm-3">
 					<p>
-						<span class="nbCommande"> 0 </span> commande(s)
+						<span class="nbCommandeUser"> 0 </span> <%=ConstantIHM.MANAGER_NBCOMMANDES %>
 					</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-3 col-sm-offset-4">
-					<p>Mathieu Fort</p>
-				</div>
-				<div class="col-sm-3">
 					<p>
-						<span class="nbCommande"> 0 </span> commande(s)
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3 col-sm-offset-4">
-					<p>Paul Adrien Douteau Sala</p>
-				</div>
-				<div class="col-sm-3">
-					<p>
-						<span class="nbCommande"> 0 </span> commande(s)
+						<span class="nbCommande"> 0 </span> <%=ConstantIHM.MANAGER_NBCOMMANDES %>
 					</p>
 				</div>
 			</div>
 		</div>
 		<br>
-		<h2 class="center-text">Commandes Restantes</h2>
+		<h2 class="center-text"><%=ConstantIHM.MANAGER_COMMANDEREST %></h2>
 		<br>
-		<p class="center-text"> <span id="nbCmdErrone"> 0 </span> commande(s) erronée(s), <span id="nbCmdEnAttente"> 11 </span> commande(s) en attente</p>
+		<p class="center-text">
+			<span id="nbCmdErrone"> 0 </span> <%=ConstantIHM.MANAGER_NBCOMMANDES %> <%=ConstantIHM.MANAGER_ERRONEE %> , <span
+				id="nbCmdEnAttente"> 11 </span> <%=ConstantIHM.MANAGER_NBCOMMANDES %>  <%=ConstantIHM.MANAGER_ENATTENTE %>
+		</p>
 
 
 	</div>
