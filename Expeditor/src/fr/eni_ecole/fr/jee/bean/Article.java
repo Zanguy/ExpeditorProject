@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.eni_ecole.fr.jee.bean;
 
 import java.io.Serializable;
@@ -68,33 +65,15 @@ public class Article implements Serializable {
 		this.nom = nom;
 		this.poids = poids;
 	}
-	
-	
-	
 
-	public long getId() {
-		return id;
-	}
+	public long getId() { return id; }
+	public void setId(long id) { this.id = id; }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+	public String getNom() { return nom; }
+	public void setNom(String nom) { this.nom = nom; }
 
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public int getPoids() {
-		return poids;
-	}
-
-	public void setPoids(int poids) {
-		this.poids = poids;
-	}
+	public int getPoids() { return poids; }
+	public void setPoids(int poids) { this.poids = poids; }
 	
 	
 	

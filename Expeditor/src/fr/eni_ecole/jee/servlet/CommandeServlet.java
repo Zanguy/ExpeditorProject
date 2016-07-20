@@ -7,25 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni_ecole.fr.jee.bean.Utilisateur;
-import fr.eni_ecole.fr.jee.dal.UtilisateurDAO;
-import fr.eni_ecole.fr.jee.util.Constant;
-
 /**
- * Servlet implementation class ConnexionServelt
+ * Servlet implementation class CommandeServlet
  */
-public class ConnexionServelt extends HttpServlet {
+public class CommandeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConnexionServelt() {
+    public CommandeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,20 +40,9 @@ public class ConnexionServelt extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
 		
-		Utilisateur u = UtilisateurDAO.checkerUtilisateur(login, password);
 		
-		if(u != null){
-			request.getSession().setAttribute("UtilisateurConnecte", u);
-			if(u.getTypeUtilisateur().toString().toLowerCase().equals(Constant.EMPLOYE.toLowerCase())){
-				response.sendRedirect(request.getContextPath() + "/test.jsp");
-			}else if(u.getTypeUtilisateur().toString().toLowerCase().equals(Constant.MANAGER.toLowerCase())){
-				response.sendRedirect(request.getContextPath() + "/test.jsp");
-			}
-		}else{
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
-		}
+		
 	}
+
 }
