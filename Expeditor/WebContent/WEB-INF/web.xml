@@ -20,4 +20,26 @@
     <url-pattern>/ConnexionServelt</url-pattern>
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleServlet</display-name>
+    <servlet-name>ArticleServlet</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleServlet</servlet-name>
+    <url-pattern>/ArticleServlet</url-pattern>
+    <url-pattern>/article</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CommandeServlet</display-name>
+    <servlet-name>CommandeServlet</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.CommandeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommandeServlet</servlet-name>
+    <url-pattern>/CommandeServlet</url-pattern>
+    <url-pattern>/commande</url-pattern>
+  </servlet-mapping>
 </web-app>
