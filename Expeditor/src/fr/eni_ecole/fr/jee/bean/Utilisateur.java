@@ -4,19 +4,22 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="UTILISATEUR")
 public class Utilisateur implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6263166639320050602L;
 
 	@Id
+	@Column(name="id")
+	private int id;
+	
 	@Column(name="login")
 	private String login;
 	
@@ -29,6 +32,8 @@ public class Utilisateur implements Serializable {
 	@Column(name="prenom")
 	private String prenom;
 	
+	@ManyToOne(optional=false, fetch=FetchType.EAGER)
+	@JoinColumn(name="id_typ_user", referencedColumnName="id")
 	private TypeUtilisateur typeUtilisateur;
 	
 	public Utilisateur() { super(); }
@@ -41,6 +46,9 @@ public class Utilisateur implements Serializable {
 		this.prenom = prenom;
 		this.typeUtilisateur = typeUtilisateur;
 	}
+	
+	public int getId() {  return id; }
+	public void setId(int id) { this.id = id; }
 	
 	public String getLogin() { return login; }
 	public void setLogin(String login) { this.login = login; }
