@@ -29,12 +29,13 @@ public class UtilisateurDAO {
 	private final static String MODIFIER_UTILISATEUR = 
 			"UPDATE UTILISATEUR"
 		  + "SET login = ?,"
-		  + 	"  nom = ?"
-		  + 	"  prenom = ?"
+		  + 	"  nom = ?,"
+		  + 	"  prenom = ?,"
+		  + 	"  id_typ_user = ?"
 		  + "WHERE id = ?;";
 	
-	public static boolean checkerUtilisateur(String login, String password){
-		boolean b = false;
+	public static Utilisateur checkerUtilisateur(String login, String password){
+		Utilisateur u = null;
 		EntityManager em = PersistenceManager.createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
@@ -46,14 +47,9 @@ public class UtilisateurDAO {
 		trans.commit();
 		em.close();
 		
-		Utilisateur u = (Utilisateur)query.getSingleResult();
+		u = (Utilisateur)query.getSingleResult();
 		
-		//Si mon objet est non nul, c'est que mon utilisateur a été matché dans la BDD
-		if(u != null){
-			b = true;
-		}
-		
-		return b;
+		return u;
 	}
 	
 	public static List<Utilisateur> obtenirUtilisateurs(){
@@ -77,15 +73,32 @@ public class UtilisateurDAO {
 		
 		Query q = em.createNativeQuery(CREER_UTILISATEUR);
 		q.setParameter(1, u.getLogin());
-		q.setParameter(2, u.getLogin());
-		//q.setParameter(3, arg1)
+		q.setParameter(2, u.getNom());
+		q.setParameter(3, u.getPrenom());
+		q.setParameter(4, u.getTypeUtilisateur()); //Ajouter le getter de l'id, pas encore développé
+		q.setParameter(5, 0); //Modifier l'entier avec le getID
+		
+		q.executeUpdate();
 		
 		trans.commit();
-		em.close();
-		
+		em.close();		
 	}
 	
-	public static void modifierUtilisateur(){
+	public static void modifierUtilisateur(Utilisateur u){
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
 		
+		Query q = em.createNativeQuery(CREER_UTILISATEUR);
+		q.setParameter(1, u.getLogin());
+		q.setParameter(2, u.getLogin());
+		q.setParameter(3, u.getNom());
+		q.setParameter(4, u.getPrenom());
+		q.setParameter(5, u.getTypeUtilisateur()); //Ajouter le getter de l'id, pas encore développé
+		
+		q.executeUpdate();
+		
+		trans.commit();
+		em.close();			
 	}
 }
