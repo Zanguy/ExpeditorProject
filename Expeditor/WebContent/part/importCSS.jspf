@@ -1,0 +1,5 @@
+<!-- CSS -->
+	<link href="<%=request.getContextPath()%>/part/style.css" rel="stylesheet">
+<!-- Bootstrap -->
+    <link href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
