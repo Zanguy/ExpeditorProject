@@ -44,10 +44,13 @@ public class UtilisateurDAO {
 		query.setParameter(1, login);
 		query.setParameter(2, password);
 		
+		
+		u = (Utilisateur)query.getSingleResult();
+		
 		trans.commit();
 		em.close();
 		
-		u = (Utilisateur)query.getSingleResult();
+		
 		
 		return u;
 	}
