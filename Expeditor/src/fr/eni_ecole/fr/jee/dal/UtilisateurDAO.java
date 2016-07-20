@@ -73,10 +73,10 @@ public class UtilisateurDAO {
 		
 		Query q = em.createNativeQuery(CREER_UTILISATEUR);
 		q.setParameter(1, u.getLogin());
-		q.setParameter(2, u.getNom());
-		q.setParameter(3, u.getPrenom());
-		q.setParameter(4, u.getTypeUtilisateur()); //Ajouter le getter de l'id, pas encore développé
-		q.setParameter(5, 0); //Modifier l'entier avec le getID
+		q.setParameter(2, u.getLogin());
+		q.setParameter(3, u.getNom());
+		q.setParameter(4, u.getPrenom());
+		q.setParameter(5, u.getTypeUtilisateur().getId()); //Ajouter le getter de l'id, pas encore développé
 		
 		q.executeUpdate();
 		
@@ -91,10 +91,10 @@ public class UtilisateurDAO {
 		
 		Query q = em.createNativeQuery(CREER_UTILISATEUR);
 		q.setParameter(1, u.getLogin());
-		q.setParameter(2, u.getLogin());
-		q.setParameter(3, u.getNom());
-		q.setParameter(4, u.getPrenom());
-		q.setParameter(5, u.getTypeUtilisateur()); //Ajouter le getter de l'id, pas encore développé
+		q.setParameter(2, u.getNom());
+		q.setParameter(3, u.getPrenom());
+		q.setParameter(4, u.getTypeUtilisateur().getId()); //Ajouter le getter de l'id, pas encore développé
+		q.setParameter(5, u.getId()); //Modifier l'entier avec le getID de l'utilisateur
 		
 		q.executeUpdate();
 		
