@@ -24,7 +24,7 @@ public class PersistenceManager {
 	  public EntityManagerFactory getEntityManagerFactory() {
 	    
 	    if (emf == null) {
-	    	this.emf = Persistence.createEntityManagerFactory("TPWebPU");
+	    	this.emf = Persistence.createEntityManagerFactory("ExpeditorJPA");
 	    }
 	    return emf;
 	  }

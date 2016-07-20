@@ -9,6 +9,7 @@
  		<provider>org.hibernate.ejb.HibernatePersistence</provider>
  
  		<class>fr.eni_ecole.jee.bean.Article</class>
+ 		<class>fr.eni_ecole.jee.bean.Utilisateur</class>
  
 		<properties>
 			<!-- Configuration pool de connexions -->

@@ -44,8 +44,7 @@
 
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
-					<a href="<%=request.getContextPath()%>/connexion" type="button"
-						class="btn btn-primary btn-block">Connexion</a>
+					<button  type="submit" class="btn btn-primary btn-block">Connexion</button>
 				</div>
 			</div>
 		</form>

@@ -42,4 +42,14 @@
     <url-pattern>/CommandeServlet</url-pattern>
     <url-pattern>/commande</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>zad</display-name>
+    <servlet-name>zad</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.zad</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>zad</servlet-name>
+    <url-pattern>/zad</url-pattern>
+  </servlet-mapping>
 </web-app>
