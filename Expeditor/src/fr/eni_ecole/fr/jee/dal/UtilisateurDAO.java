@@ -19,8 +19,8 @@ public class UtilisateurDAO {
 	private final static String CHECKER_UTILISATEUR = 
 			  "SELECT * "
 			+ "FROM UTILISATEUR "
-			+ "WHERE login = ? "
-			+ "AND password = CONVERT(VARCHAR(40), HASHBYTES('SHA1', ?));";
+			+ "WHERE login like ? "
+			+ "AND password like ?;";
 	
 	private final static String CREER_UTILISATEUR = 
 			  "INSERT INTO UTILISATEUR (login, password, nom, prenom, id_typ_user)"
