@@ -1,6 +1,7 @@
 package fr.eni_ecole.fr.jee.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -42,7 +43,7 @@ public class Utilisateur implements Serializable {
 	private TypeUtilisateur typeUtilisateur;
 	
 	@OneToMany(mappedBy="utilisateur", targetEntity=Utilisateur.class, fetch=FetchType.EAGER)
-	private List<Commande> lesCommandes;
+	private List<Commande> lesCommandes = new ArrayList<>();
 	
 	public Utilisateur() { super(); }
 	

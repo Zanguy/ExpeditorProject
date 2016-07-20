@@ -1,6 +1,7 @@
 package fr.eni_ecole.fr.jee.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,7 +31,7 @@ public class Article implements Serializable {
 	private int poids;
 	
 	@OneToMany(mappedBy="article", targetEntity=LigneCommande.class, fetch=FetchType.EAGER)
-	private List<LigneCommande> lesLigneCommandes;
+	private List<LigneCommande> lesLigneCommandes = new ArrayList<>();
 	
 	public Article() { super(); }
 	

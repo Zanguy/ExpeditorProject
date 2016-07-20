@@ -1,6 +1,7 @@
 package fr.eni_ecole.fr.jee.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -27,7 +28,7 @@ public class TypeUtilisateur implements Serializable {
 	private String libelle;
 	
 	@OneToMany(mappedBy="typeUtilisateur", targetEntity=Utilisateur.class, fetch=FetchType.EAGER)
-	private List<Utilisateur> lesUtilisateurs;
+	private List<Utilisateur> lesUtilisateurs = new ArrayList<>();
 	
 	public TypeUtilisateur() { super(); }
 	

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni_ecole.fr.jee.bean.Utilisateur;
 import fr.eni_ecole.fr.jee.dal.UtilisateurDAO;
-import fr.eni_ecole.fr.jee.util.Constant;
+import fr.eni_ecole.fr.jee.util.*;
 
 /**
  * Servlet implementation class ConnexionServelt

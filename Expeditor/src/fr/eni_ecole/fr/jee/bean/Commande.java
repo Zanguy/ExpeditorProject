@@ -1,6 +1,7 @@
 package fr.eni_ecole.fr.jee.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class Commande implements Serializable {
 	private Utilisateur utilisateur;
 	
 	@OneToMany(mappedBy="commande", targetEntity=LigneCommande.class, fetch=FetchType.EAGER)
-	private List<LigneCommande> lesLigneCommandes;
+	private List<LigneCommande> lesLigneCommandes = new ArrayList<>();
 
 	public Commande() { super(); }
 
