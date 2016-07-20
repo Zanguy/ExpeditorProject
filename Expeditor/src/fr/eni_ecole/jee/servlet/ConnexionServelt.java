@@ -51,10 +51,10 @@ public class ConnexionServelt extends HttpServlet {
 		
 		if(u != null){
 			request.getSession().setAttribute("UtilisateurConnecte", u);
-			if(u.getTypeUtilisateur().toString().toLowerCase().equals(Constant.EMPLOYE.toLowerCase())){
-				response.sendRedirect(request.getContextPath() + "/test.jsp");
-			}else if(u.getTypeUtilisateur().toString().toLowerCase().equals(Constant.MANAGER.toLowerCase())){
-				response.sendRedirect(request.getContextPath() + "/test.jsp");
+			if(u.getTypeUtilisateur().getLibelle().toLowerCase().equals(Constant.EMPLOYE.toLowerCase())){
+				response.sendRedirect(request.getContextPath() + "/Employe/indexEmploye.jsp");
+			}else if(u.getTypeUtilisateur().getLibelle().toLowerCase().equals(Constant.MANAGER.toLowerCase())){
+				response.sendRedirect(request.getContextPath() + "/Manager/indexManager.jsp");
 			}
 		}else{
 			response.sendRedirect(request.getContextPath() + "/index.jsp");

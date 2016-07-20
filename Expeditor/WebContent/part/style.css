@@ -5,4 +5,8 @@
 	cursor: default;
 }
 
+#stats{font-size:1.3em;}
+
 .container{margin-top:70px;}
+
+.center-text{text-align:center}
