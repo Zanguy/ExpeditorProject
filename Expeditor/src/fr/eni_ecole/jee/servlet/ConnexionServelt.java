@@ -39,8 +39,20 @@ public class ConnexionServelt extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect(request.getContextPath() + "/test.jsp");
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
 		
+		Utilisateur u = UtilisateurDAO.findUtilisateur(login, password);
+		
+		if(u != null){
+			request.getSession().setAttribute("UtilisateurConnecte", u);
+			if(u.getTypeUtilisateur()){
+				response.sendRedirect(request.getContextPath() + "/test.jsp");
+			}else{
+				response.sendRedirect(request.getContextPath() + "/test.jsp");
+			}
+		}else{
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
+		}
 	}
-
 }
