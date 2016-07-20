@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employe</title>
+<title>Expeditor - Employe</title>
 <%@ include file="../part/importCSS.jspf"%>
 </head>
 <body>
@@ -64,13 +64,13 @@
 				<div class="col-md-6 col-md-offset-3">
 					<div class="form-group">
 						<label for="poidsTotal">Poids Total :</label> <input type="text"
-							class="form-control" id="poidTotal" placeholder="0" disabled><strong>
+							class="form-control" id="poidTotal" placeholder="0" readonly><strong>
 							Kg</strong>
 					</div>
 				</div>
 			</div>
 			<br>
-			<button type="submit" class="btn btn-primary pull-right">Enregistrer</button>
+			<button type="submit" class="btn btn-primary pull-right" disabled>Enregistrer</button>
 
 		</form>
 	</div>
