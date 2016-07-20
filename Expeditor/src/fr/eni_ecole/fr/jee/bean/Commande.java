@@ -2,6 +2,7 @@ package fr.eni_ecole.fr.jee.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -46,6 +48,9 @@ public class Commande implements Serializable {
 	@ManyToOne(optional=false, fetch=FetchType.EAGER)
 	@JoinColumn(name="utilisateur", referencedColumnName="id")
 	private Utilisateur utilisateur;
+	
+	@OneToMany(mappedBy="commande", targetEntity=LigneCommande.class, fetch=FetchType.EAGER)
+	private List<LigneCommande> lesLigneCommandes;
 
 	public Commande() { super(); }
 
@@ -86,5 +91,8 @@ public class Commande implements Serializable {
 	public void setUtilisateur(Utilisateur utilisateur) { this.utilisateur = utilisateur; }
 
 	public static long getSerialversionuid() { return serialVersionUID; }
-	
+
+	public List<LigneCommande> getLigneCommandes() { return lesLigneCommandes; }
+	public void setLigneCommandes(List<LigneCommande> lesLigneCommandes) { this.lesLigneCommandes = lesLigneCommandes; }
+
 }
