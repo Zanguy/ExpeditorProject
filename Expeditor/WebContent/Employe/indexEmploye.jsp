@@ -26,37 +26,53 @@
 
 		</div>
 		<br>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Nom de l'article</th>
-					<th>Poids</th>
-					<th>Qté demandé</th>
-					<th>Qté remplie</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
-			</tbody>
-		</table>
+		<form class="form-inline" action="" method="post">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nom de l'article</th>
+						<th>Poids</th>
+						<th>Qté demandé</th>
+						<th>Qté remplie</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					<tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					<tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					<tr>
+				</tbody>
+			</table>
 
+			<br>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="form-group">
+						<label for="poidsTotal">Poids Total :</label> <input type="text"
+							class="form-control" id="poidTotal" placeholder="0" disabled><strong>
+							Kg</strong>
+					</div>
+				</div>
+			</div>
+			<br>
+			<button type="submit" class="btn btn-primary pull-right">Enregistrer</button>
+
+		</form>
 	</div>
 	<%@ include file="../part/importJS.jspf"%>
 
