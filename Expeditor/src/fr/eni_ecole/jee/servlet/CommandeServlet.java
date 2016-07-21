@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni_ecole.fr.jee.bean.Commande;
+import fr.eni_ecole.fr.jee.bean.EtatCommande;
+import fr.eni_ecole.fr.jee.bean.Utilisateur;
 import fr.eni_ecole.fr.jee.dal.CommandeDAO;
 
 /**
@@ -44,7 +46,9 @@ public class CommandeServlet extends HttpServlet {
 			HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		Commande c = CommandeDAO.obtenirCommandeEmploye();
-		
+		c.setUtilisateur((Utilisateur)request.getSession().getAttribute("UtilisateurConnecte"));
+		c.setEtatCommande(new EtatCommande());
+		c.getEtatCommande().setId(2);
 		request.setAttribute("commande", c);
 		
 		response.sendRedirect(request.getContextPath() + "/Employe/indexEmploye.jsp");

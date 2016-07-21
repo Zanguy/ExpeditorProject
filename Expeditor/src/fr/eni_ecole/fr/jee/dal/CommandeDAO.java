@@ -1,5 +1,7 @@
 package fr.eni_ecole.fr.jee.dal;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -13,19 +15,23 @@ public class CommandeDAO {
 			+ "AND utilisateur IS NULL "
 			+ "ORDER BY dateCreation ASC";
 	public static Commande obtenirCommandeEmploye(){
-		Commande c = null;
+		List<Commande> liste = null;
 		EntityManager em = PersistenceManager.createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
 		
 		Query req = em.createQuery(OBTENIR_COMMANDE_EMPLOYE);
 		
-		c = (Commande)req.getSingleResult();
+		liste = (List<Commande>)req.getResultList();
 		
 		trans.commit();
 		em.close();
 		
-		return c;
+		if(liste.isEmpty()){
+			return null;
+		}else{
+			return liste.get(0);
+		}
 	}
 	
 	public static void modifierCommande(Commande c){
