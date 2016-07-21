@@ -57,9 +57,6 @@
 				</thead>
 				<tbody>
 					<%
-						/*int i = 0;
-						List<LigneCommande> list = c.getLigneCommandes();
-									for (LigneCommande l : list) {*/
 					%>
 					<tr>
 						<td><%=/*l.getArticle().getNom()*/%></td>
