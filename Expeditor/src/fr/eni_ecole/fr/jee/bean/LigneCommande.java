@@ -3,9 +3,9 @@ package fr.eni_ecole.fr.jee.bean;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -16,12 +16,13 @@ public class LigneCommande implements Serializable {
 
 	private static final long serialVersionUID = -4107009732162412816L;
 	
-	@Id
+	@EmbeddedId
+	private LigneCommandeKey ligneCommandeKey;
+	
 	@ManyToOne(optional=false)
 	@JoinColumn(name="id_article")
 	private Article article;
 	
-	@Id
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_commande")
 	private Commande commande;
