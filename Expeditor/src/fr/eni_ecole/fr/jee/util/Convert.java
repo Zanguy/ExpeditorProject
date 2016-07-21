@@ -1,6 +1,7 @@
 package fr.eni_ecole.fr.jee.util;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
+import com.csvreader.CsvReader;
+
 import fr.eni_ecole.fr.jee.bean.Article;
 import fr.eni_ecole.fr.jee.bean.Commande;
 import fr.eni_ecole.fr.jee.bean.LigneCommande;
@@ -19,7 +22,7 @@ import fr.eni_ecole.fr.jee.bean.LigneCommande;
 public class Convert {
 
 	
-	public static  List<Commande> convertFromCSV (){
+	public static  List<Commande> convertFromXLS (){
 		POIFSFileSystem fs;
 		HSSFWorkbook wb = null;
 		
@@ -77,8 +80,39 @@ public class Convert {
 	    	}while(tableau[nb + 1] != null);
 	    	listeCommande.add(c);
 	    }
+	    return listeCommande;
+	}
+	
+	public static  List<Commande> convertFromCSV (){
+		
+		try {
+
+            CsvReader products = new CsvReader("C:/Users/Administrateur/Downloads/Jeux_de_commandes_clientes_CSV.csv");
+
+            products.readHeaders();
+
+            while (products.readRecord())
+            {
+                String productID = products.get("Date de commande");
+
+                // perform program logic here
+                System.out.println(productID + ":" + productID);
+            }
+
+            products.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	    
+	    List<Commande> listeCommande = new ArrayList<Commande>();
+	    
 	    
 	    return listeCommande;
 	}
+	
+	
 	
 }

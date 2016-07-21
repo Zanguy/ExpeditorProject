@@ -20,7 +20,7 @@ public class UtilisateurDAO {
 		trans.begin();
 		
 		//Query query = em.createNativeQuery(CHECKER_UTILISATEUR, Utilisateur.class);
-		Query query = em.createQuery("FROM Utilisateur WHERE login =: login AND password =: password");
+		Query query = em.createQuery("FROM Utilisateur WHERE login = :login AND password = :password");
 		query.setParameter("login", login);
 		query.setParameter("password", password);
 		
