@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni_ecole.fr.jee.bean.Commande;
+import fr.eni_ecole.fr.jee.dal.CommandeDAO;
+
 /**
  * Servlet implementation class CommandeServlet
  */
@@ -40,8 +43,11 @@ public class CommandeServlet extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
+		Commande c = CommandeDAO.obtenirCommandeEmploye();
 		
+		request.setAttribute("commande", c);
 		
+		response.sendRedirect(request.getContextPath() + "/Employe/indexEmploye.jsp");
 		
 	}
 

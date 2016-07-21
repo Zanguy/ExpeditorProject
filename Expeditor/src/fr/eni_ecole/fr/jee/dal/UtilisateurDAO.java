@@ -24,8 +24,12 @@ public class UtilisateurDAO {
 		query.setParameter("login", login);
 		query.setParameter("password", password);
 		
+		try{
+			u = (Utilisateur)query.getSingleResult();
+		}catch (javax.persistence.NoResultException e){
+			u = null;
+		}
 		
-		u = (Utilisateur)query.getSingleResult();
 		
 		trans.commit();
 		em.close();

@@ -2,6 +2,7 @@ package fr.eni_ecole.jee.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,7 @@ public class ConnexionServelt extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+			HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
@@ -52,11 +53,13 @@ public class ConnexionServelt extends HttpServlet {
 		if(u != null){
 			request.getSession().setAttribute("UtilisateurConnecte", u);
 			if(u.getTypeUtilisateur().getLibelle().toLowerCase().equals(Constant.EMPLOYE.toLowerCase())){
-				response.sendRedirect(request.getContextPath() + "/Employe/indexEmploye.jsp");
+				RequestDispatcher req = request.getRequestDispatcher("/commande");
+				req.forward(request, response);
 			}else if(u.getTypeUtilisateur().getLibelle().toLowerCase().equals(Constant.MANAGER.toLowerCase())){
 				response.sendRedirect(request.getContextPath() + "/Manager/indexManager.jsp");
 			}
 		}else{
+			request.setAttribute("erreurLogin", "Login ou mot de passe invalide !");
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}
 	}
