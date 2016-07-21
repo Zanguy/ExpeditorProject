@@ -1,5 +1,6 @@
 package fr.eni_ecole.fr.jee.dal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,11 @@ public class CommandeDAO {
 			+ "WHERE etatCommande.id = 1 "
 			+ "AND utilisateur IS NULL "
 			+ "ORDER BY dateCreation ASC";
+	
+	public static final String OBTENIR_COMMANDES = 
+			"FROM Commande"
+		+   "WHERE etatCommande.id != 3";
+	
 	public static Commande obtenirCommandeEmploye(){
 		List<Commande> liste = null;
 		EntityManager em = PersistenceManager.createEntityManager();
@@ -46,5 +52,21 @@ public class CommandeDAO {
 		
 		trans.commit();
 		em.close();
-	}	
+	}
+	
+	public List<Commande> obtenirCommandes(){
+		List<Commande> liste = new ArrayList<Commande>();
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		
+		Query req = em.createQuery(OBTENIR_COMMANDE_EMPLOYE);
+		
+		liste = (List<Commande>)req.getResultList();
+		
+		trans.commit();
+		em.close();
+		
+		return liste;
+	}
 }
