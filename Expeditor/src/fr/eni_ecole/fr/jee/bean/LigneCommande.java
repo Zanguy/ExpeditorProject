@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,12 +18,12 @@ public class LigneCommande implements Serializable {
 	
 	@Id
 	@ManyToOne(optional=false)
-	@JoinColumn(name="id_article", referencedColumnName="id")
+	@JoinColumn(name="id_article")
 	private Article article;
 	
 	@Id
-	@ManyToOne(optional=false)
-	@JoinColumn(name="id_commande", referencedColumnName="id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_commande")
 	private Commande commande;
 	
 	@Column(name="num_ligne")

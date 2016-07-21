@@ -42,8 +42,8 @@ public class Utilisateur implements Serializable {
 	@JoinColumn(name="id_typ_user", referencedColumnName="id")
 	private TypeUtilisateur typeUtilisateur;
 	
-	//@OneToMany(mappedBy="utilisateur", targetEntity=Commande.class, fetch=FetchType.EAGER)
-	//private List<Commande> lesCommandes = new ArrayList<>();
+	@OneToMany(mappedBy="utilisateur")
+	private List<Commande> lesCommandes = new ArrayList<>();
 	
 	public Utilisateur() { super(); }
 	
@@ -76,7 +76,7 @@ public class Utilisateur implements Serializable {
 
 	public static long getSerialversionuid() { return serialVersionUID; }
 
-	//public List<Commande> getLesCommandes() { return lesCommandes; }
-	//public void setLesCommandes(List<Commande> lesCommandes) { this.lesCommandes = lesCommandes; }
+	public List<Commande> getLesCommandes() { return lesCommandes; }
+	public void setLesCommandes(List<Commande> lesCommandes) { this.lesCommandes = lesCommandes; }
 
 }

@@ -46,11 +46,11 @@ public class Commande implements Serializable {
 	@JoinColumn(name="etat_commande", referencedColumnName="id")
 	private EtatCommande etatCommande;
 	
-	@ManyToOne(optional=false, fetch=FetchType.EAGER)
-	@JoinColumn(name="utilisateur", referencedColumnName="id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="utilisateur")
 	private Utilisateur utilisateur;
 	
-	@OneToMany(mappedBy="commande", targetEntity=LigneCommande.class, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="commande")
 	private List<LigneCommande> lesLigneCommandes = new ArrayList<>();
 
 	public Commande() { super(); }
