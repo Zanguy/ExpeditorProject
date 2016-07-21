@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 
-		<%if(!"null".equals(erreur)){ %>
+		<%if(!"null".equals(erreur) && erreur != null){ %>
 		<div class="alert alert-danger col-md-4 col-md-offset-4 center-text" role="alert"><%=erreur %></div>
 		<%} %>
 		<div style="margin-top: 5%" class="row">
