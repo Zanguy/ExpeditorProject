@@ -11,6 +11,9 @@
  		<class>fr.eni_ecole.fr.jee.bean.Article</class>
  		<class>fr.eni_ecole.fr.jee.bean.Utilisateur</class>
  		<class>fr.eni_ecole.fr.jee.bean.TypeUtilisateur</class>
+ 		<class>fr.eni_ecole.fr.jee.bean.Commande</class>
+ 		<class>fr.eni_ecole.fr.jee.bean.LigneCommande</class>
+ 		<class>fr.eni_ecole.fr.jee.bean.EtatCommande</class>
  
 		<properties>
 			<!-- Configuration pool de connexions -->
