@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import fr.eni_ecole.fr.jee.bean.Commande;
 import fr.eni_ecole.fr.jee.bean.LigneCommande;
+import fr.eni_ecole.fr.jee.bean.Stat;
 import fr.eni_ecole.fr.jee.util.PersistenceManager;
 
 public class CommandeDAO {
@@ -60,9 +61,32 @@ public class CommandeDAO {
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
 		
-		Query req = em.createQuery(OBTENIR_COMMANDE_EMPLOYE);
+		Query req = em.createQuery(OBTENIR_COMMANDES);
 		
 		liste = (List<Commande>)req.getResultList();
+		
+		trans.commit();
+		em.close();
+		
+		return liste;
+	}
+	
+	public List<Stat> obtenirStatistiquesJournalieres(){
+		List<Stat> liste = new ArrayList<Stat>();
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		
+		Query req = em.createNativeQuery("SELECT u.prenom + ' ' + UPPER(u.nom) as nomPersonne, COUNT(*) as nbCommandes"
+										+ "FROM COMMANDE c"
+										+ "INNER JOIN UTILISATEUR u ON c.utilisateur = u.id"
+										+ "WHERE etat_commande = 3"
+										+ "AND CONVERT(CHAR(10), c.date_modif, 121) = CONVERT(CHAR(10), GETDATE(), 121)"
+										+ "GROUP BY u.prenom + ' ' + UPPER(u.nom);");
+		
+		List list = req.getResultList();
+		
+		
 		
 		trans.commit();
 		em.close();
