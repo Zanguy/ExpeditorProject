@@ -24,7 +24,7 @@ public class Article implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name="nom")
+	@Column(name="libelle")
 	private String nom;
 	
 	@Column(name="poids")

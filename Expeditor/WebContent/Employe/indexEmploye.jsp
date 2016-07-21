@@ -57,6 +57,7 @@
 				</thead>
 				<tbody>
 					<%
+					//to do FOR EACH LIGNES
 					%>
 					<tr>
 						<td><%=/*l.getArticle().getNom() */ %></td>

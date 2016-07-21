@@ -55,7 +55,7 @@ public class CommandeServlet extends HttpServlet {
 		case "getAllCommande":
 			
 			List<Commande> list = CommandeDAO.obtenirCommandes();
-			request.getSession().setAttribute("ListeCommande", list);
+			request.setAttribute("ListeCommande", list);
 
 			where = "/Manager/indexManager.jsp";
 			break;

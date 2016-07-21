@@ -9,22 +9,25 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import fr.eni_ecole.fr.jee.bean.Article;
+import fr.eni_ecole.fr.jee.bean.Commande;
 import fr.eni_ecole.fr.jee.util.PersistenceManager;
 
 
 public class ArticleDAO {
-	private final static String RECHERCHE_ARTICLE = "from ARTICLE";
+	private final static String RECHERCHE_ARTICLE = "From Article";
 
 	
 	
 	public static List<Article> getAllArticle(){
 		
+		List<Article> listeArticle =null;
 		EntityManager em = PersistenceManager.createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
 		
+		Query req = em.createQuery(RECHERCHE_ARTICLE);
 		
-		List<Article> listeArticle = (List<Article>)em.createQuery(RECHERCHE_ARTICLE);
+		listeArticle = (List<Article>) req.getResultList();
 		
 		
 		trans.commit();

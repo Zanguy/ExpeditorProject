@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%@page import="java.util.List"%>
+<%@page import="fr.eni_ecole.fr.jee.bean.*"%>
+<%
+	List<Article> list = (List<Article>) request.getAttribute("listeArticle");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,18 +24,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%
+				for (Article a : list) {
+				%>
 				<tr>
-					<td></td>
-					<td></td>
+					<td><%= a.getNom() %></td>
+					<td><%= a.getPoids() %></td>
 				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-				<tr>
+				<%
+				}
+				%>
 			</tbody>
 		</table>
 
