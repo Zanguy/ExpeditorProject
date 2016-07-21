@@ -42,7 +42,7 @@ public class Commande implements Serializable {
 	@Column(name="adresse")
 	private String adresse;
 	
-	@ManyToOne(optional=false, fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="etat_commande", referencedColumnName="id")
 	private EtatCommande etatCommande;
 	

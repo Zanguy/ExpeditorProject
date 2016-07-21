@@ -27,7 +27,7 @@ public class EtatCommande implements Serializable {
 	@Column(name="libelle")
 	private String libelle;
 	
-	@OneToMany(mappedBy="etatCommande", targetEntity=Commande.class, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="etatCommande")
 	private List<Commande> lesCommandes = new ArrayList<>();
 
 	public EtatCommande() { super(); }

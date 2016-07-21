@@ -30,8 +30,8 @@ public class Article implements Serializable {
 	@Column(name="poids")
 	private int poids;
 	
-	@OneToMany(mappedBy="article")
-	private List<LigneCommande> lesLigneCommandes = new ArrayList<>();
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="article")
+	private List<LigneCommande> lesLigneCommandes = new ArrayList<LigneCommande>();
 	
 	public Article() { super(); }
 	

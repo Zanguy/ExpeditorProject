@@ -19,12 +19,12 @@ public class LigneCommande implements Serializable {
 	@EmbeddedId
 	private LigneCommandeKey ligneCommandeKey;
 	
-	@ManyToOne(optional=false)
-	@JoinColumn(name="id_article")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_article",insertable=false, updatable=false)
 	private Article article;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_commande")
+	@JoinColumn(name="id_commande",insertable=false, updatable=false)
 	private Commande commande;
 	
 	@Column(name="num_ligne")
