@@ -19,7 +19,7 @@ public class CommandeDAO {
 			+ "ORDER BY dateCreation ASC";
 	
 	public static final String OBTENIR_COMMANDES = 
-			"FROM Commande"
+			"FROM Commande "
 		+   "WHERE etatCommande.id != 3";
 	
 	public static Commande obtenirCommandeEmploye(){
