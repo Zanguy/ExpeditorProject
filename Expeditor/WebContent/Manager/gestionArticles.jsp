@@ -16,7 +16,7 @@
 <body>
 	<%@ include file="../part/header.jspf"%>
 	<div class="container">
-		<table class="table table-stripped">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th><%=ConstantIHM.NOMARTICLE%></th>
@@ -25,31 +25,40 @@
 			</thead>
 			<tbody>
 				<%
-				for (Article a : list) {
+					for (Article a : list) {
 				%>
+				<tr class="articleDispo">
+					<td class="nomArticle"><%=a.getNom()%></td>
+					<td class="poidsArticle"><%=a.getPoids()%></td>
+					<td class="idArticle" style="visibility: hidden"><%=a.getId()%></td>
 				<tr>
-					<td><%= a.getNom() %></td>
-					<td><%= a.getPoids() %></td>
-				<tr>
-				<%
-				}
-				%>
+					<%
+						}
+					%>
+				
 			</tbody>
 		</table>
 
 
 		<br>
 		<div class="row">
-			<div class="col-md-7 col-md-offset-3">
+			<div class="col-md-9 col-md-offset-2">
 				<form class="form-inline" action="" method="post">
 					<div class="form-group">
 						<label for="nom"><%=ConstantIHM.NOM%></label> <input type="text"
 							class="form-control" id="nom" name="nom">
 					</div>
 					<div class="form-group">
-						<label for="poids"><%=ConstantIHM.POIDS%></label> <input type="text"
-							class="form-control" id="poids" name="poids">
+						<label for="poids"><%=ConstantIHM.POIDS%></label> <input
+							type="text" class="form-control" id="poids" name="poids">
 					</div>
+					<div class="checkbox">
+						<label> <input name="maj" id="maj" type="checkbox">  MAJ ?
+						</label>
+					</div>
+					<input type="text" class="form-control" id=id name="id"
+						style="display: none">
+
 					<button type="submit" class="btn btn-primary"
 						aria-label="Left Align" disabled>
 						<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
@@ -61,5 +70,24 @@
 	</div>
 
 	<%@ include file="../part/importJS.jspf"%>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("tr").click(function() {
+				//Init
+				var nom = "";
+				var poids = 0;
+				var id = 0;
+				//Récup
+				nom = $(this).find(".nomArticle").text();
+				poids = $(this).find(".poidsArticle").text();
+				id = $(this).find(".idArticle").text();
+				//Set
+				$("#nom").val(nom);
+				$("#poids").val(poids);
+				$("#id").val(id);
+				$("#maj").val(true);
+			});
+		});
+	</script>
 </body>
 </html>
