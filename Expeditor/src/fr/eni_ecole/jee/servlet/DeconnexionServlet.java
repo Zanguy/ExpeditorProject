@@ -14,15 +14,15 @@ import fr.eni_ecole.fr.jee.bean.Utilisateur;
 import fr.eni_ecole.fr.jee.dal.CommandeDAO;
 
 /**
- * Servlet implementation class CommandeServlet
+ * Servlet implementation class DeconnexionServlet
  */
-public class CommandeServlet extends HttpServlet {
+public class DeconnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommandeServlet() {
+    public DeconnexionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,14 +46,10 @@ public class CommandeServlet extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		Commande c = CommandeDAO.obtenirCommandeEmploye();
-		c.setUtilisateur((Utilisateur)request.getSession().getAttribute("UtilisateurConnecte"));
-		c.setEtatCommande(new EtatCommande());
-		c.getEtatCommande().setId(2);
-		request.setAttribute("commande", c);
 		
-		RequestDispatcher req = request.getRequestDispatcher("/Employe/indexEmploye.jsp");
-		req.forward(request, response);
+		request.getSession().setAttribute("UtilisateurConnecte",null);
+		
+		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		
 		
 	}

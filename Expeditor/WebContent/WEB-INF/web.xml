@@ -52,4 +52,15 @@
     <servlet-name>zad</servlet-name>
     <url-pattern>/zad</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeconnexionServlet</display-name>
+    <servlet-name>DeconnexionServlet</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.DeconnexionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeconnexionServlet</servlet-name>
+    <url-pattern>/DeconnexionServlet</url-pattern>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
 </web-app>
