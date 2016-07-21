@@ -2,6 +2,7 @@ package fr.eni_ecole.jee.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class CommandeServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+			HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		Commande c = CommandeDAO.obtenirCommandeEmploye();
 		c.setUtilisateur((Utilisateur)request.getSession().getAttribute("UtilisateurConnecte"));
@@ -51,7 +52,9 @@ public class CommandeServlet extends HttpServlet {
 		c.getEtatCommande().setId(2);
 		request.setAttribute("commande", c);
 		
-		response.sendRedirect(request.getContextPath() + "/Employe/indexEmploye.jsp");
+		RequestDispatcher req = request.getRequestDispatcher("/Employe/indexEmploye.jsp");
+		req.forward(request, response);
+		
 		
 	}
 
