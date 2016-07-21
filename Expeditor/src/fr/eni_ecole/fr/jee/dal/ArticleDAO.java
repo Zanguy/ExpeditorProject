@@ -13,7 +13,7 @@ import fr.eni_ecole.fr.jee.util.PersistenceManager;
 
 
 public class ArticleDAO {
-	private final static String RECHERCHE_ARTICLE = "select * from ARTICLE";
+	private final static String RECHERCHE_ARTICLE = "from ARTICLE";
 
 	
 	
