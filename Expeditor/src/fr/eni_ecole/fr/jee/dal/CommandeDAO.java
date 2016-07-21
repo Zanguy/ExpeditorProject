@@ -55,7 +55,7 @@ public class CommandeDAO {
 		em.close();
 	}
 	
-	public List<Commande> obtenirCommandes(){
+	public static List<Commande> obtenirCommandes(){
 		List<Commande> liste = new ArrayList<Commande>();
 		EntityManager em = PersistenceManager.createEntityManager();
 		EntityTransaction trans = em.getTransaction();
