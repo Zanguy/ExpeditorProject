@@ -76,4 +76,18 @@ public class UtilisateurDAO {
 		trans.commit();
 		em.close();			
 	}
+	
+	public static Utilisateur findById(Utilisateur u){
+		
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		
+		Utilisateur util = (Utilisateur)em.find(Utilisateur.class, u.getId());
+		
+		trans.commit();
+		em.close();
+		
+		return util;
+	}
 }
