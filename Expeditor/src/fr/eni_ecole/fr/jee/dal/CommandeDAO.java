@@ -84,7 +84,13 @@ public class CommandeDAO {
 										+ "AND CONVERT(CHAR(10), c.date_modif, 121) = CONVERT(CHAR(10), GETDATE(), 121) "
 										+ "GROUP BY u.prenom + ' ' + UPPER(u.nom);");
 		
-		List list = req.getResultList();
+		List<Object[]> list = (List<Object[]>)req.getResultList();
+		
+		for (Object[] object : list) {
+			Stat s = new Stat(object[0].toString(), Integer.parseInt(object[1].toString()));
+			
+			liste.add(s);
+		}
 		
 		//Le getResult renvoie les bonnes lignes.
 		//Il faut juste binder les objets Stats dans la liste.
