@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -16,15 +19,18 @@ public class LigneCommande implements Serializable {
 
 	private static final long serialVersionUID = -4107009732162412816L;
 	
-	@EmbeddedId
-	private LigneCommandeKey ligneCommandeKey;
+	
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_article",insertable=false, updatable=false)
+	@JoinColumn(name="id_article")
 	private Article article;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_commande",insertable=false, updatable=false)
+	@JoinColumn(name="id_commande")
 	private Commande commande;
 	
 	@Column(name="num_ligne")
@@ -56,5 +62,13 @@ public class LigneCommande implements Serializable {
 	public void setQte(long qte) { this.qte = qte; }
 	
 	public static long getSerialversionuid() { return serialVersionUID; }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 }

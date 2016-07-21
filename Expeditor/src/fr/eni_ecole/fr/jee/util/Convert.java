@@ -75,7 +75,7 @@ public class Convert {
 	    		lc.setQte(Integer.parseInt(separation[1].substring(0, 2)));
 	    		lc.setArticle(a);
 	    		
-	    		c.getLigneCommandes().add(lc);
+	    		//c.getLigneCommandes().add(lc);
 	    		
 	    	}while(tableau[nb + 1] != null);
 	    	listeCommande.add(c);

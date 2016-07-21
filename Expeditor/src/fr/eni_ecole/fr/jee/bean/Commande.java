@@ -43,15 +43,15 @@ public class Commande implements Serializable {
 	private String adresse;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="etat_commande", referencedColumnName="id")
+	@JoinColumn(name="etat_commande")
 	private EtatCommande etatCommande;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="utilisateur")
 	private Utilisateur utilisateur;
 	
-	@OneToMany(mappedBy="commande")
-	private List<LigneCommande> lesLigneCommandes = new ArrayList<LigneCommande>();
+	//@OneToMany(mappedBy="commande")
+	//private List<LigneCommande> lesLigneCommandes = new ArrayList<LigneCommande>();
 
 	public Commande() { super(); }
 
@@ -93,7 +93,7 @@ public class Commande implements Serializable {
 
 	public static long getSerialversionuid() { return serialVersionUID; }
 
-	public List<LigneCommande> getLigneCommandes() { return lesLigneCommandes; }
-	public void setLigneCommandes(List<LigneCommande> lesLigneCommandes) { this.lesLigneCommandes = lesLigneCommandes; }
+	//public List<LigneCommande> getLigneCommandes() { return lesLigneCommandes; }
+	//public void setLigneCommandes(List<LigneCommande> lesLigneCommandes) { this.lesLigneCommandes = lesLigneCommandes; }
 
 }
