@@ -58,7 +58,7 @@
 				<tbody>
 					<%
 						int i = 0;
-						List<LigneCommande> list = c.getLigneCommandes();
+						List<LigneCommande> list = c.getLesLigneCommandes();
 									for (LigneCommande l : list) {
 					%>
 					<tr>

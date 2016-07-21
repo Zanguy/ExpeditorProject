@@ -93,7 +93,13 @@ public class Commande implements Serializable {
 
 	public static long getSerialversionuid() { return serialVersionUID; }
 
-	//public List<LigneCommande> getLigneCommandes() { return lesLigneCommandes; }
-	//public void setLigneCommandes(List<LigneCommande> lesLigneCommandes) { this.lesLigneCommandes = lesLigneCommandes; }
+	/*public List<LigneCommande> getLesLigneCommandes() {
+		return lesLigneCommandes;
+	}*/
 
+	/*public void setLesLigneCommandes(List<LigneCommande> lesLigneCommandes) {
+		this.lesLigneCommandes = lesLigneCommandes;
+	}*/
+
+	
 }
