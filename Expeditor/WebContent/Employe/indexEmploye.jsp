@@ -1,41 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%@page import="java.util.List"%>
 <%@page import="fr.eni_ecole.fr.jee.bean.*"%>
+<%
+	Commande c = (Commande) request.getAttribute("commande");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><%=ConstantIHM.EXPEDITOR %> - <%=ConstantIHM.MANAGER_EMPLOYE %></title>
+<title><%=ConstantIHM.EXPEDITOR%> - <%=ConstantIHM.MANAGER_EMPLOYE%></title>
 <%@ include file="../part/importCSS.jspf"%>
 </head>
 <body>
-	
+
 	<%@ include file="../part/header.jspf"%>
 
 	<div class="container">
 		<div>
-			<p class="lead"><%=ConstantIHM.MANAGER_COMMANDE %>
-				: NC 30
+			<p class="lead"><%=ConstantIHM.MANAGER_COMMANDE%>
+				:
+				<%=c.getNumCommande()%>
 			</p>
 			<hr>
 			<div class="row">
-				<div class="col-md-6"><%=ConstantIHM.MANAGER_CLIENT %>
-					: NTP
+				<div class="col-md-6"><%=ConstantIHM.MANAGER_CLIENT%>
+					:
+					<%=c.getNom()%>
 				</div>
-				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_DATECOMMANDE %>
-					12/04/2014 22:30:00
+				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_DATECOMMANDE%>
+					<%=c.getDateCreation()%>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_ADRESSE %>
-					: 89 avenue charles de gaules - 4400 NANTES
+				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_ADRESSE%>
+					:
+					<%=c.getAdresse()%>
 				</div>
 			</div>
 			<hr>
 
 		</div>
 		<br>
+
 		<form class="form-inline" action="" method="post">
 			<table class="table table-hover">
 				<thead>
@@ -47,12 +56,21 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%
+						int i = 0;
+						List<LigneCommande> list = c.getLigneCommandes();
+									for (LigneCommande l : list) {
+					%>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					<tr>
+						<td><%=l.getArticle().getNom()%></td>
+						<td><%=l.getArticle().getPoids()%></td>
+						<td><%=l.getQte()%></td>
+						<td><input type="text" class="form-control" id="qte<%= i %>" placeholder="Entrer la Quantité"></td>
+					</tr>
+
+					<%
+						}
+					%>
 				</tbody>
 			</table>
 
@@ -74,11 +92,11 @@
 	</div>
 	<%@ include file="../part/importJS.jspf"%>
 	<script type="text/javascript">
-	$(document).ready(function(){
-	    $("p").keyup(function(){
-	        $(this).hide();
-	    });
-	});
+		$(document).ready(function() {
+			$("p").keyup(function() {
+				$(this).hide();
+			});
+		});
 	</script>
 
 </body>
