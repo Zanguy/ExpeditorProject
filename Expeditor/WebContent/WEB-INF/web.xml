@@ -63,4 +63,15 @@
     <url-pattern>/DeconnexionServlet</url-pattern>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RetourAcceuilServlet</display-name>
+    <servlet-name>RetourAcceuilServlet</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.RetourAcceuilServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetourAcceuilServlet</servlet-name>
+    <url-pattern>/RetourAcceuilServlet</url-pattern>
+    <url-pattern>/acceuil</url-pattern>
+  </servlet-mapping>
 </web-app>
