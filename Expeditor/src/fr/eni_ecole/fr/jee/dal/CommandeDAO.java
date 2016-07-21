@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import fr.eni_ecole.fr.jee.bean.Commande;
+import fr.eni_ecole.fr.jee.bean.LigneCommande;
 import fr.eni_ecole.fr.jee.util.PersistenceManager;
 
 public class CommandeDAO {
@@ -23,6 +24,8 @@ public class CommandeDAO {
 		Query req = em.createQuery(OBTENIR_COMMANDE_EMPLOYE);
 		
 		liste = (List<Commande>)req.getResultList();
+	
+		//List<LigneCommande> test = liste.get(0).getLigneCommandes();
 		
 		trans.commit();
 		em.close();

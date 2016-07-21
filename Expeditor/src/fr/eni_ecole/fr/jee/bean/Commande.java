@@ -51,7 +51,7 @@ public class Commande implements Serializable {
 	private Utilisateur utilisateur;
 	
 	@OneToMany(mappedBy="commande")
-	private List<LigneCommande> lesLigneCommandes = new ArrayList<>();
+	private List<LigneCommande> lesLigneCommandes = new ArrayList<LigneCommande>();
 
 	public Commande() { super(); }
 

@@ -38,7 +38,7 @@
 			%>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a id="loginUser" href="#"><%= login %> : </a></li>
-				<li><a href="#">Deconnexion</a></li>
+				<li><a href="<%=request.getContextPath()%>/deconnexion">Deconnexion</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
