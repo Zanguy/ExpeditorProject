@@ -50,8 +50,8 @@ public class Commande implements Serializable {
 	@JoinColumn(name="utilisateur")
 	private Utilisateur utilisateur;
 	
-	//@OneToMany(mappedBy="commande")
-	//private List<LigneCommande> lesLigneCommandes = new ArrayList<LigneCommande>();
+	@OneToMany(mappedBy="commande", fetch=FetchType.EAGER)
+	private List<LigneCommande> lesLigneCommandes = new ArrayList<LigneCommande>();
 
 	public Commande() { super(); }
 
@@ -93,13 +93,8 @@ public class Commande implements Serializable {
 
 	public static long getSerialversionuid() { return serialVersionUID; }
 
-	/*public List<LigneCommande> getLesLigneCommandes() {
-		return lesLigneCommandes;
-	}*/
-
-	/*public void setLesLigneCommandes(List<LigneCommande> lesLigneCommandes) {
-		this.lesLigneCommandes = lesLigneCommandes;
-	}*/
+	public List<LigneCommande> getLesLigneCommandes() { return lesLigneCommandes; }
+	public void setLesLigneCommandes(List<LigneCommande> lesLigneCommandes) { this.lesLigneCommandes = lesLigneCommandes; }
 
 	
 }

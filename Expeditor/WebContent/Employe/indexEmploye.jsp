@@ -57,17 +57,20 @@
 				</thead>
 				<tbody>
 					<%
-					//to do FOR EACH LIGNES
+						int i = 0;
+						for (LigneCommande l : c.getLesLigneCommandes()) {
+							
 					%>
 					<tr>
-						<td><%=/*l.getArticle().getNom() */ %></td>
-						<td><%=/*l.getArticle().getPoids()*/%></td>
-						<td><%=/*l.getQte()*/%></td>
-						<td><input type="text" class="form-control" id="qte<%= /*i */ %>" placeholder="Entrer la Quantité"></td>
+						<td><%=l.getArticle().getNom()%></td>
+						<td><%=l.getArticle().getPoids()%></td>
+						<td><%=l.getQte()%></td>
+						<td><input type="text" class="form-control" id="qte<%=i%>" placeholder="Entrer la Quantité"></td>
 					</tr>
 
 					<%
-						/*}*/
+							i++;
+						}
 					%>
 				</tbody>
 			</table>

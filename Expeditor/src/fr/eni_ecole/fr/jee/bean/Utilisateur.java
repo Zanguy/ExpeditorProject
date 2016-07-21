@@ -42,7 +42,7 @@ public class Utilisateur implements Serializable {
 	@JoinColumn(name="id_typ_user", referencedColumnName="id")
 	private TypeUtilisateur typeUtilisateur;
 	
-	@OneToMany(mappedBy="utilisateur")
+	@OneToMany(mappedBy="utilisateur", fetch=FetchType.EAGER)
 	private List<Commande> lesCommandes = new ArrayList<>();
 	
 	public Utilisateur() { super(); }
