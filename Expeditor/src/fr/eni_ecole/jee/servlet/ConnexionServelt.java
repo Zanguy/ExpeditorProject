@@ -52,6 +52,7 @@ public class ConnexionServelt extends HttpServlet {
 		
 		if(u != null){
 			request.getSession().setAttribute("UtilisateurConnecte", u);
+			request.getSession().setAttribute("erreurLogin", "");
 			if(u.getTypeUtilisateur().getLibelle().toLowerCase().equals(Constant.EMPLOYE.toLowerCase())){
 				RequestDispatcher req = request.getRequestDispatcher("/commande");
 				req.forward(request, response);
@@ -59,7 +60,7 @@ public class ConnexionServelt extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/Manager/indexManager.jsp");
 			}
 		}else{
-			request.setAttribute("erreurLogin", "Login ou mot de passe invalide !");
+			request.getSession().setAttribute("erreurLogin", "Login ou mot de passe invalide !");
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}
 	}
