@@ -3,7 +3,11 @@ package fr.eni_ecole.fr.jee.util;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,21 +86,81 @@ public class Convert {
 	    }
 	    return listeCommande;
 	}
-	
+		
 	public static  List<Commande> convertFromCSV (){
+		
+		List<Commande> liste = new ArrayList<Commande>();
+		List<LigneCommande> listeLigneCommande = new ArrayList<LigneCommande>();
+		
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		
 		try {
 
             CsvReader products = new CsvReader("C:/Users/Administrateur/Downloads/Jeux_de_commandes_clientes_CSV.csv");
-
+            
             products.readHeaders();
-
+            
             while (products.readRecord())
             {
-                String productID = products.get("Date de commande");
-
-                // perform program logic here
-                System.out.println(productID + ":" + productID);
+            	Commande c = new Commande();
+            	
+            	listeLigneCommande = new ArrayList<LigneCommande>();
+            	
+            	String chaine = products.get(0);
+            	String[] ligne = chaine.split("\t");
+            	
+            	String dateCommande = ligne[0];
+            	String numCommande = ligne[1];
+            	String nomClient = ligne[2];
+            	String adresse = ligne[3];
+            	
+            	//Affichage des infos de la commande
+            	/*
+            	 System.out.println(dateCommande + " / " + numCommande + " / " + nomClient
+            			+ " / " + adresse);
+            	*/            	
+            	
+            	try {
+					c.setDateCreation(df.parse(dateCommande));
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	
+            	c.setNumCommande(numCommande);
+            	c.setNom(nomClient);
+            	c.setAdresse(adresse);
+            	
+            	for(int i = 4; i < ligne.length - 1; i++){
+            		LigneCommande lc = new LigneCommande();
+            		lc.setNum_ligne(i-3);
+            		lc.setCommande(c);
+            		
+            		String article = new String(ligne[i].trim().getBytes(), Charset.forName("UTF-8"));
+            		
+            		String[] tabArticle = article.split("\\(");
+            		
+            		String libelleArticle = tabArticle[0].trim();
+            		int qte = Integer.parseInt(tabArticle[1].split("\\)")[0]);
+            		
+            		Article a = new Article();
+            		
+            		a.setNom(libelleArticle);
+            		
+            		lc.setArticle(a);
+            		lc.setQte(qte);            		
+            		
+            		//System.out.println(ligne[i].trim());
+            		//System.out.println(article);
+            		System.out.println(libelleArticle + " / " + qte);
+            		
+            		listeLigneCommande.add(lc);
+            	}
+            	
+            	//c.setLigneCommandes(listeLigneCommande);
+            	
+            	liste.add(c);
             }
 
             products.close();
@@ -105,14 +169,10 @@ public class Convert {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }	    
 	    
-	    List<Commande> listeCommande = new ArrayList<Commande>();
-	    
-	    
-	    return listeCommande;
+	    return liste;
 	}
-	
-	
+
 	
 }
