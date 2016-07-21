@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%
+	String erreur = (String) request.getSession().getAttribute("erreurLogin");
+	request.getSession().setAttribute("erreurLogin", "null");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +17,11 @@
 <body>
 	<div class="container">
 
-		<div style="margin-top: 15%" class="row">
+		<%if(!"null".equals(erreur)){ %>
+		<div class="alert alert-danger col-md-4 col-md-offset-4 center-text" role="alert"><%=erreur %></div>
+		<%} %>
+		<div style="margin-top: 5%" class="row">
+
 
 			<div class="col-md-4 col-md-offset-4">
 				<h3><%=ConstantIHM.CONNEXION%></h3>
@@ -25,7 +33,8 @@
 				<div class="col-md-4 col-md-offset-4">
 					<div class="input-group center-block">
 						<input name="login" type="text" class="form-control"
-							placeholder="<%=ConstantIHM.LOGIN%>" aria-describedby="basic-addon1">
+							placeholder="<%=ConstantIHM.LOGIN%>"
+							aria-describedby="basic-addon1">
 					</div>
 				</div>
 			</div>
@@ -36,7 +45,8 @@
 				<div class="col-md-4 col-md-offset-4">
 					<div class="input-group center-block">
 						<input name="password" type="text"
-							class="form-control center-block" placeholder="<%=ConstantIHM.MDP%>"
+							class="form-control center-block"
+							placeholder="<%=ConstantIHM.MDP%>"
 							aria-describedby="basic-addon1">
 					</div>
 				</div>
