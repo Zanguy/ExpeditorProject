@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%@page import="fr.eni_ecole.fr.jee.bean.*"%>
+<%/* if(request.getSession().getAttribute("UtilisateurConnecte") == null){
+	//response.sendRedirect(request.getContextPath() + "/index.jsp");
+} else {*/%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,19 +13,27 @@
 <%@ include file="../part/importCSS.jspf"%>
 </head>
 <body>
+	
 	<%@ include file="../part/header.jspf"%>
 
 	<div class="container">
 		<div>
-			<p class="lead"><%=ConstantIHM.MANAGER_COMMANDE %> : NC 30</p>
+			<p class="lead"><%=ConstantIHM.MANAGER_COMMANDE %>
+				: NC 30
+			</p>
 			<hr>
 			<div class="row">
-				<div class="col-md-6"><%=ConstantIHM.MANAGER_CLIENT %> : NTP</div>
-				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_DATECOMMANDE %> 12/04/2014 22:30:00</div>
+				<div class="col-md-6"><%=ConstantIHM.MANAGER_CLIENT %>
+					: NTP
+				</div>
+				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_DATECOMMANDE %>
+					12/04/2014 22:30:00
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_ADRESSE %> : 89 avenue charles de gaules -
-					4400 NANTES</div>
+				<div class="col-md-6"><%=ConstantIHM.EMPLOYE_ADRESSE %>
+					: 89 avenue charles de gaules - 4400 NANTES
+				</div>
 			</div>
 			<hr>
 
@@ -44,18 +56,6 @@
 						<td></td>
 						<td></td>
 					<tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					<tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					<tr>
 				</tbody>
 			</table>
 
@@ -64,9 +64,9 @@
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
 					<div class="form-group">
-						<label for="poidsTotal"><%=ConstantIHM.POIDSTOTAL%> :</label> <input type="text"
-							class="form-control" id="poidTotal" placeholder="0" readonly><strong>
-							<%=ConstantIHM.KG%></strong>
+						<label for="poidsTotal"><%=ConstantIHM.POIDSTOTAL%> :</label> <input
+							type="text" class="form-control" id="poidTotal" placeholder="0"
+							readonly><strong> <%=ConstantIHM.KG%></strong>
 					</div>
 				</div>
 			</div>
@@ -76,6 +76,13 @@
 		</form>
 	</div>
 	<%@ include file="../part/importJS.jspf"%>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $("p").keyup(function(){
+	        $(this).hide();
+	    });
+	});
+	</script>
 
 </body>
 </html>

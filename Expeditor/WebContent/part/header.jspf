@@ -1,3 +1,13 @@
+<%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%@page import="fr.eni_ecole.fr.jee.bean.*"%>
+<%
+	//Récupération de l'utilisateur
+	Utilisateur u = (Utilisateur) request.getSession().getAttribute(
+			"UtilisateurConnecte");
+	String login = u.getLogin();
+	String typeUser = u.getTypeUtilisateur().getLibelle().toLowerCase();
+	
+%>
 <nav class="navbar navbar-inverse navbar-fixed-top hidden-print">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -9,19 +19,25 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Expeditor</a>
+			<a class="navbar-brand" href="#"><%=ConstantIHM.EXPEDITOR%></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
+			<%
+			if (Constant.MANAGER.equals(typeUser)) {
+			%>
 			<ul class="nav navbar-nav">
 				<li><a href="#">Accueil</a></li>
 				<li><a href="#">Article</a></li>
 				<li><a href="#">Employés</a></li>
 			</ul>
+			<%
+			}
+			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a id="loginUser" href="#">Mathieu : </a></li>
+				<li><a id="loginUser" href="#"><%= login %> : </a></li>
 				<li><a href="#">Deconnexion</a></li>
 			</ul>
 		</div>
