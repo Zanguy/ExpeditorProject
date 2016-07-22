@@ -49,8 +49,7 @@ public class DeconnexionServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("UtilisateurConnecte",null);
 		
-		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
-		
+		response.sendRedirect("/index.jsp");
 		
 	}
 
