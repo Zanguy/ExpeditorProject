@@ -49,9 +49,15 @@ public class CommandeServlet extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
+		String type = "";
 		String where = "/";
 		
-		switch ((String) request.getAttribute("type")) {
+		if (request.getAttribute("type") != null) {
+			type = (String) request.getAttribute("type");
+		}
+		
+		
+		switch (type) {
 		case "getAllCommande":
 			
 			List<Commande> list = CommandeDAO.obtenirCommandes();
@@ -70,16 +76,17 @@ public class CommandeServlet extends HttpServlet {
 			where = "/Employe/indexEmploye.jsp";
 
 			break;
-		case "enregistrerCommande" :
-			int id = Integer.parseInt(request.getParameter("id"));
+		default:
+			break;
+		}
+		
+		if ("enregistrerCommande".equals(request.getParameter("action"))) {
+			long id = Long.parseLong(request.getParameter("id"));
 			Commande comm = CommandeDAO.findById(id);
 			EtatCommande et = new EtatCommande();
 			et.setId(3);
 			comm.setEtatCommande(et);
 			CommandeDAO.modifierCommande(comm);
-			break;
-		default:
-			break;
 		}
 		
 		RequestDispatcher req = request

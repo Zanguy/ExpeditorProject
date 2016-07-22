@@ -102,7 +102,7 @@ public class CommandeDAO {
 		return liste;
 	}
 	
-	public static Commande findById(int id){
+	public static Commande findById(Long id){
 		
 		EntityManager em = PersistenceManager.createEntityManager();
 		EntityTransaction trans = em.getTransaction();

@@ -45,7 +45,9 @@
 		</div>
 		<br>
 
-		<form class="form-inline" action="" method="post">
+		<form class="form-inline"
+			action="<%=request.getContextPath()%>/commande?action=enregistrerCommande&id=<%=c.getId()%>"
+			method="post">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -58,19 +60,25 @@
 				<tbody>
 					<%
 						int i = 0;
-						for (LigneCommande l : c.getLesLigneCommandes()) {
-							
+						int poidsTotal = 0;
+															for (LigneCommande l : c.getLesLigneCommandes()) {
 					%>
-					<tr>
+					<tr class="tr">
 						<td><%=l.getArticle().getNom()%></td>
 						<td><%=l.getArticle().getPoids()%></td>
-						<td><%=l.getQte()%></td>
-						<td><input type="text" class="form-control" id="qte<%=i%>" placeholder="Entrer la Quantité"></td>
+						<td class="QteD"><%=l.getQte()%></td>
+						<td>
+							<div class="form-group">
+								<input class="QteR" type="text" class="form-control"
+									id="qte<%=i%>" placeholder="Entrer la Quantité" value="0">
+							</div>
+						</td>
 					</tr>
 
 					<%
-							i++;
-						}
+						poidsTotal += l.getArticle().getPoids() * l.getQte();
+						i++;
+															}
 					%>
 				</tbody>
 			</table>
@@ -81,21 +89,23 @@
 				<div class="col-md-6 col-md-offset-3">
 					<div class="form-group">
 						<label for="poidsTotal"><%=ConstantIHM.POIDSTOTAL%> :</label> <input
-							type="text" class="form-control" id="poidTotal" placeholder="0"
-							readonly><strong> <%=ConstantIHM.KG%></strong>
+							type="text" class="form-control" id="poidTotal" placeholder="0" readonly="readonly" value="<%= poidsTotal%>"><strong>
+							<%=ConstantIHM.KG%></strong>
 					</div>
 				</div>
 			</div>
 			<br>
-			<button type="submit" class="btn btn-primary pull-right" disabled><%=ConstantIHM.ENREGISTRER%></button>
+			<button type="submit" class="btn btn-primary pull-right"><%=ConstantIHM.ENREGISTRER%></button>
 
 		</form>
 	</div>
 	<%@ include file="../part/importJS.jspf"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("p").keyup(function() {
-				$(this).hide();
+			$(".QteR").keypress(function() {
+				if (condition) {
+					
+				}
 			});
 		});
 	</script>
