@@ -27,6 +27,7 @@ import com.csvreader.CsvReader;
 
 import fr.eni_ecole.fr.jee.bean.Article;
 import fr.eni_ecole.fr.jee.bean.Commande;
+import fr.eni_ecole.fr.jee.bean.EtatCommande;
 import fr.eni_ecole.fr.jee.bean.LigneCommande;
 
 public class Convert {
@@ -59,6 +60,10 @@ public class Convert {
 				
 				Commande c = new Commande();
 				
+				EtatCommande ec = new EtatCommande();
+				ec.setId(1);
+				
+				c.setEtatCommande(ec);
 				c.setDateCreation(df.parse(cellDate.getContents()));
 				c.setNumCommande(cellNum.getContents());
 				c.setNom(cellNomClient.getContents());
@@ -128,6 +133,11 @@ public class Convert {
             while (products.readRecord())
             {
             	Commande c = new Commande();
+				
+				EtatCommande ec = new EtatCommande();
+				ec.setId(1);
+				
+				c.setEtatCommande(ec);
             	
             	listeLigneCommande = new ArrayList<LigneCommande>();
             	
@@ -178,7 +188,7 @@ public class Convert {
             		
             		//System.out.println(ligne[i].trim());
             		//System.out.println(article);
-            		System.out.println(libelleArticle + " / " + qte);
+            		//System.out.println(libelleArticle + " / " + qte);
             		
             		listeLigneCommande.add(lc);
             	}
