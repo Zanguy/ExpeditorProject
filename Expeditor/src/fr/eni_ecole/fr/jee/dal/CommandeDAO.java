@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import fr.eni_ecole.fr.jee.bean.Commande;
 import fr.eni_ecole.fr.jee.bean.LigneCommande;
 import fr.eni_ecole.fr.jee.bean.Stat;
+import fr.eni_ecole.fr.jee.bean.Utilisateur;
 import fr.eni_ecole.fr.jee.util.PersistenceManager;
 
 public class CommandeDAO {
@@ -99,5 +100,19 @@ public class CommandeDAO {
 		em.close();
 		
 		return liste;
+	}
+	
+	public static Commande findById(int id){
+		
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		
+		Commande comm = (Commande)em.find(Commande.class, id);
+		
+		trans.commit();
+		em.close();
+		
+		return comm;
 	}
 }

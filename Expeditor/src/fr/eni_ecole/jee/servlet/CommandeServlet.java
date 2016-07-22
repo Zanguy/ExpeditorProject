@@ -70,6 +70,14 @@ public class CommandeServlet extends HttpServlet {
 			where = "/Employe/indexEmploye.jsp";
 
 			break;
+		case "enregistrerCommande" :
+			int id = Integer.parseInt(request.getParameter("id"));
+			Commande comm = CommandeDAO.findById(id);
+			EtatCommande et = new EtatCommande();
+			et.setId(3);
+			comm.setEtatCommande(et);
+			CommandeDAO.modifierCommande(comm);
+			break;
 		default:
 			break;
 		}
