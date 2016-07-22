@@ -55,7 +55,7 @@ public class UtilisateurServlet extends HttpServlet {
 
 		String where = "/";
 		
-		switch ((String) request.getAttribute("type")) {
+		switch ((String) request.getParameter("action")) {
 		case "getAllUtilisateur":
 			
 			getAllUtilisateur(request, response);
@@ -69,10 +69,6 @@ public class UtilisateurServlet extends HttpServlet {
 		default:
 			break;
 		}
-		
-		RequestDispatcher req = request
-				.getRequestDispatcher(where);
-		req.forward(request, response);
 		
 	}
 	

@@ -31,7 +31,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#">Accueil</a></li>
 				<li><a href="<%=request.getContextPath()%>/article?action=liste">Article</a></li>
-				<li><a href="#">Employés</a></li>
+				<li><a href="<%=request.getContextPath()%>/utilisateur?action=getAllUtilisateur">Employés</a></li>
 			</ul>
 			<%
 			}

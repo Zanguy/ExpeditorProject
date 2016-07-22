@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="fr.eni_ecole.fr.jee.util.*"%>
+<%@page import="java.util.List"%>
+<%@page import="fr.eni_ecole.fr.jee.bean.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +11,9 @@
 <%@ include file="../part/importCSS.jspf"%>
 </head>
 <body>
+<%
+	List<Utilisateur> list = (List<Utilisateur>) request.getAttribute("ListeUtilisateur");
+%>
 	<%@ include file="../part/header.jspf"%>
 	<div class="container">
 		<table class="table table-stripped">
@@ -20,17 +25,24 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%
+					for (Utilisateur item : list) {
+				%>
+				<tr class="utilisateur" style="cursor: pointer;">
+					<td class="nomUtilisateur"><%=item.getNom()%></td>
+					<td class="prenomUtilisateur"><%=item.getPrenom()%></td>
+					<td class="typeUtilisateur"><%=item.getTypeUtilisateur().getLibelle()%></td>
+					<td class="idUtilisateur" style="visibility: hidden"><%=item.getId()%></td>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
+					<%
+						}
+					%>
 			</tbody>
 		</table>
 
 
 		<br>
-		<form class="form-inline" action="" method="post">
+		<form class="form-inline" action="<%=request.getContextPath()%>/utilisateur?action=enregistrerUtilisateur" method="post">
 			<div class="row">
 				<div class="col-md-11 col-md-offset-1">
 					<div class="form-group">
