@@ -27,7 +27,7 @@
 				<%
 					for (Article a : list) {
 				%>
-				<tr class="articleDispo">
+				<tr class="articleDispo" style="cursor: pointer;">
 					<td class="nomArticle"><%=a.getNom()%></td>
 					<td class="poidsArticle"><%=a.getPoids()%></td>
 					<td class="idArticle" style="visibility: hidden"><%=a.getId()%></td>
@@ -43,7 +43,7 @@
 		<br>
 		<div class="row">
 			<div class="col-md-9 col-md-offset-2">
-				<form class="form-inline" action="" method="post">
+				<form class="form-inline" action="<%=request.getContextPath()%>/article?action=ajout" method="post">
 					<div class="form-group">
 						<label for="nom"><%=ConstantIHM.NOM%></label> <input type="text"
 							class="form-control" id="nom" name="nom">
@@ -52,18 +52,16 @@
 						<label for="poids"><%=ConstantIHM.POIDS%></label> <input
 							type="text" class="form-control" id="poids" name="poids">
 					</div>
-					<div class="checkbox">
-						<label> <input name="maj" id="maj" type="checkbox">  MAJ ?
-						</label>
-					</div>
 					<input type="text" class="form-control" id=id name="id"
 						style="display: none">
 
 					<button type="submit" class="btn btn-primary"
-						aria-label="Left Align" disabled>
+						aria-label="Left Align" id="btnSave">
 						<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
 						<%=ConstantIHM.ENREGISTRER%>
 					</button>
+					<button type="reset" id="btnReset" class="btn btn-primary"
+						aria-label="Left Align">Reset</button>
 				</form>
 			</div>
 		</div>
@@ -85,8 +83,8 @@
 				$("#nom").val(nom);
 				$("#poids").val(poids);
 				$("#id").val(id);
-				$("#maj").val(true);
 			});
+
 		});
 	</script>
 </body>
