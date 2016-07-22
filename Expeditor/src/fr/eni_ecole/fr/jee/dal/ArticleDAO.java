@@ -15,6 +15,7 @@ import fr.eni_ecole.fr.jee.util.PersistenceManager;
 
 public class ArticleDAO {
 	private final static String RECHERCHE_ARTICLE = "From Article";
+	private final static String RECHERCHE_ARTICLE_LIBELLE = "From Article a WHERE a.nom = :nom";
 
 	
 	
@@ -74,6 +75,25 @@ public class ArticleDAO {
 		
 		trans.commit();
 		em.close();
+		
+	}
+
+	public static Article findByLibelle(String nom) {
+		
+		Article a = null;
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		
+		Query req = em.createQuery(RECHERCHE_ARTICLE_LIBELLE);
+		req.setParameter("nom", nom);
+		
+		a = (Article) req.getResultList().get(0);
+		
+		trans.commit();
+		em.close();
+		
+		return a;
 		
 	}
 	

@@ -19,7 +19,9 @@ public class ConstantIHM {
 	public static final String ENREGISTRER = "Enregistrer";
 	public static final String CONNEXION = "Connexion";
 	public static final String POIDS = "Poids";
+	public static final String FICHIER = "Ajout d'une commande";
 	public static final String NOMARTICLE = "Nom de l'article";
+	public static final String LISTE_COMMANDE = "Commande en cours";
 	
 	public static final String QTEDEMANDE = "Qté demandé";
 	public static final String QTEREMPLIE = "Qté remplie";

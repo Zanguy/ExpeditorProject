@@ -120,8 +120,21 @@ public class CommandeDAO {
 		EntityManager em = PersistenceManager.createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
-		
+		c.setId(new Long("-1"));
 		em.merge(c);
+		trans.commit();
+		em.close();		
+	}
+	
+	public static void creerLigneCommande(LigneCommande lc){
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		
+		trans.begin();
+		
+		lc.setArticle(ArticleDAO.findByLibelle(lc.getArticle().getNom()));
+		lc.setId(-1);
+		em.merge(lc);
 		
 		trans.commit();
 		em.close();		

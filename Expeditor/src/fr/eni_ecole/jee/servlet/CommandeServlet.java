@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni_ecole.fr.jee.bean.Commande;
 import fr.eni_ecole.fr.jee.bean.EtatCommande;
+import fr.eni_ecole.fr.jee.bean.LigneCommande;
 import fr.eni_ecole.fr.jee.bean.Utilisateur;
 import fr.eni_ecole.fr.jee.dal.CommandeDAO;
+import fr.eni_ecole.fr.jee.util.Convert;
 
 /**
  * Servlet implementation class CommandeServlet
@@ -60,10 +62,9 @@ public class CommandeServlet extends HttpServlet {
 		switch (type) {
 		case "getAllCommande":
 			
-			List<Commande> list = CommandeDAO.obtenirCommandes();
-			request.setAttribute("ListeCommande", list);
-
+			getAllCommande(request, response);
 			where = "/Manager/indexManager.jsp";
+			
 			break;
 		case "getComandeEmploye":
 			Commande c = CommandeDAO.obtenirCommandeEmploye();
@@ -87,11 +88,38 @@ public class CommandeServlet extends HttpServlet {
 			et.setId(3);
 			comm.setEtatCommande(et);
 			CommandeDAO.modifierCommande(comm);
+		}else if ("importCommande".equals(request.getParameter("action"))) {
+			
+			if(request.getParameter("fichier") != null && !((String)request.getParameter("fichier")).isEmpty()){
+				String filePath = (String)request.getParameter("fichier");
+				List<Commande> liste = null;
+				if(filePath.endsWith(".csv")){
+					liste = Convert.convertFromCSV();
+				}else if (filePath.endsWith(".cxls")){
+					liste = Convert.convertFromXLS();
+				}
+				
+				for (Commande item : liste) {
+					CommandeDAO.creerCommande(item);
+					for (LigneCommande lc : item.getLesLigneCommandes()) {
+						//CommandeDAO.creerLigneCommande(lc);
+					}
+				}
+			}
+			getAllCommande(request, response);
+			where = "/Manager/indexManager.jsp";
 		}
 		
 		RequestDispatcher req = request
 				.getRequestDispatcher(where);
 		req.forward(request, response);
 		
+	}
+
+	private void getAllCommande(HttpServletRequest request,
+			HttpServletResponse response) {
+		List<Commande> list = CommandeDAO.obtenirCommandes();
+		request.setAttribute("ListeCommande", list);
+
 	}
 }
