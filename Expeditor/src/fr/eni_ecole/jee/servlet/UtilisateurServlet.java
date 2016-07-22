@@ -76,18 +76,21 @@ public class UtilisateurServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		Utilisateur u = new Utilisateur();
 		
-		String id = (String)request.getAttribute("id");
+		String id = (String)request.getParameter("id");
+		String role = (String)request.getParameter("role");
 		
-		u.setLogin((String)request.getAttribute("login"));
-		u.setPassword((String)request.getAttribute("password"));
-		u.setNom((String)request.getAttribute("nom"));
-		u.setPrenom((String)request.getAttribute("prenom"));
+		u.setLogin((String)request.getParameter("login"));
+		u.setPassword((String)request.getParameter("mdp"));
+		u.setNom((String)request.getParameter("nom"));
+		u.setPrenom((String)request.getParameter("prenom"));
+		
+		
 		
 		TypeUtilisateur tu = new TypeUtilisateur();
-		if(((String)request.getAttribute("type")).equals(Constant.EMPLOYE)){
+		if(role.equals(Constant.EMPLOYE)){
 			tu.setLibelle(Constant.EMPLOYE);
 			tu.setId(1);
-		}if(((String)request.getAttribute("type")).equals(Constant.MANAGER)){
+		}if(role.equals(Constant.MANAGER)){
 			tu.setLibelle(Constant.MANAGER);
 			tu.setId(2);
 		}
