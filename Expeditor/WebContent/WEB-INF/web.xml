@@ -74,4 +74,15 @@
     <url-pattern>/RetourAcceuilServlet</url-pattern>
     <url-pattern>/acceuil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UtilisateurServlet</display-name>
+    <servlet-name>UtilisateurServlet</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.UtilisateurServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UtilisateurServlet</servlet-name>
+    <url-pattern>/UtilisateurServlet</url-pattern>
+    <url-pattern>/utilisateur</url-pattern>
+  </servlet-mapping>
 </web-app>
