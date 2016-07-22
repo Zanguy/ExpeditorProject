@@ -115,4 +115,15 @@ public class CommandeDAO {
 		
 		return comm;
 	}
+	
+	public static void creerCommande(Commande c){
+		EntityManager em = PersistenceManager.createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		
+		em.merge(c);
+		
+		trans.commit();
+		em.close();		
+	}
 }
